@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Produk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <span class="logo">ToserbaZ</span>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#promo">Promo</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <div class="navbar-cart">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-text">Keranjang</span>
+        </div>
+    </nav>
+
+    <main>
+        <h2>🛒 Daftar Produk</h2>
+        <!-- Dropdown filter kategori -->
+        <div class="filter">
+            <label for="kategori">Filter Kategori: </label>
+            <select id="kategori">
+                <option value="all">Semua</option>
+                <option value="elektronik">Elektronik</option>
+                <option value="fashion">Fashion</option>
+                <option value="makanan">Makanan</option>
+                <option value="minuman">Minuman</option>
+            </select>
+        </div>
+        <!-- Tempat daftar produk akan ditampilkan -->
+        <div id="produk-list" class="produk-container"></div>
+    </main>
+
+    <footer class="footer">
+        <div>© 2025 ToserbaZ. All rights reserved.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

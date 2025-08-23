@@ -1,0 +1,177 @@
+/* Navbar Styles */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #3182ce 60%, #63b3ed 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    height: 62px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.navbar-brand .logo {
+    font-size: 1.45rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: color 0.18s;
+}
+.navbar-menu li a:hover {
+    color: #e2e8f0;
+}
+.navbar-cart {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.cart-icon {
+    font-size: 1.25rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 32px;
+}
+
+/* Footer Styles */
+.footer {
+    width: 100%;
+    background: #2d3748;
+    color: #fff;
+    text-align: center;
+    padding: 18px 0 14px 0;
+    font-size: 1rem;
+    margin-top: 40px;
+    letter-spacing: 0.5px;
+}
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f6f8fa;
+            color: #222;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 32px;
+            color: #2d3748;
+            letter-spacing: 1px;
+        }
+
+        .filter {
+            margin: 32px auto 24px auto;
+            text-align: center;
+        }
+
+        .filter label {
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .filter select {
+            padding: 7px 16px;
+            border-radius: 6px;
+            border: 1px solid #bdbdbd;
+            font-size: 1rem;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        .filter select:focus {
+            border: 1.5px solid #3182ce;
+            outline: none;
+        }
+
+        .produk-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        .produk-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(44, 62, 80, 0.10);
+            padding: 18px 18px 20px 18px;
+            width: 230px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.18s, box-shadow 0.18s;
+            border: none;
+            position: relative;
+        }
+        .produk-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+        }
+
+        .produk-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+        }
+
+        .produk-card h3 {
+            font-size: 1.13rem;
+            margin: 0 0 7px 0;
+            color: #2d3748;
+            text-align: center;
+        }
+
+        .produk-card p {
+            font-size: 0.98rem;
+            margin: 0 0 7px 0;
+            color: #4a5568;
+            text-align: center;
+        }
+
+        .produk-card .harga {
+            color: #3182ce;
+            font-size: 1.08rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .btn-beli {
+            background: linear-gradient(90deg, #3182ce 60%, #63b3ed 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 9px 28px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(49, 130, 206, 0.10);
+            transition: background 0.18s, transform 0.18s;
+        }
+        .btn-beli:hover {
+            background: linear-gradient(90deg, #2563eb 60%, #4299e1 100%);
+            transform: scale(1.06);
+        }
