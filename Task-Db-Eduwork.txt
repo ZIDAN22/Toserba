@@ -1,0 +1,131 @@
+
+Setting environment for using XAMPP for Windows.
+Zidan@ZDNFDLLH22 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 94
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE EcommerceKu_db;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> USE EcommerceKu_db;
+Database changed
+MariaDB [EcommerceKu_db]> CREATE TABLE products (id INT AUTO_INCREMENT PRIMARY KEY,
+    ->  nama_produk VARCHAR(100) NOT NULL,
+    ->     harga DECIMAL(10,2) NOT NULL,
+    ->     deskripsi TEXT,
+    ->     stok INT NOT NULL
+    -> );
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [EcommerceKu_db]> CREATE TABLE users (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nama VARCHAR(100) NOT NULL,
+    ->     email VARCHAR(100) UNIQUE NOT NULL,
+    ->     password VARCHAR(255) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.027 sec)
+
+MariaDB [EcommerceKu_db]> CREATE TABLE orders (
+    ->     order_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     user_id INT NOT NULL,
+    ->     product_id INT NOT NULL,
+    ->     quantity INT NOT NULL,
+    ->     total DECIMAL(10,2) NOT NULL,
+    ->     FOREIGN KEY (user_id) REFERENCES users(id),
+    ->     FOREIGN KEY (product_id) REFERENCES products(id)
+    -> );
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [EcommerceKu_db]> SHOW TABLES;
++--------------------------+
+| Tables_in_ecommerceku_db |
++--------------------------+
+| orders                   |
+| products                 |
+| users                    |
++--------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [EcommerceKu_db]> INSERT INTO products (nama_produk, harga, deskripsi, stok)
+    -> VALUES ('Laptop Gaming', 15000000, 'Laptop gaming dengan spesifikasi tinggi', 10);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [EcommerceKu_db]> INSERT INTO products (nama_produk, harga, deskripsi, stok)
+    -> VALUES ('Laptop Konsumen', 7000000, 'Laptop konsumen untuk kebutuhan kerja', 25;)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+    -> VALUES ('Laptop Konsumen', 7000000, 'Laptop konsumen untuk kebutuhan kerja', 25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+VALUES ('Laptop Konsumen', 7000000, 'Laptop konsumen untuk kebutuhan kerja'...' at line 1
+MariaDB [EcommerceKu_db]> INSERT INTO products (nama_produk, harga, deskripsi, stok)
+    -> VALUES ('Laptop Konsumen', 7000000, 'Laptop konsumen untuk kebutuhan kerja', 25);
+Query OK, 1 row affected (0.018 sec)
+
+MariaDB [EcommerceKu_db]> SELECT * FROM products;
++----+-----------------+-------------+-----------------------------------------+------+
+| id | nama_produk     | harga       | deskripsi                               | stok |
++----+-----------------+-------------+-----------------------------------------+------+
+|  1 | Laptop Gaming   | 15000000.00 | Laptop gaming dengan spesifikasi tinggi |   10 |
+|  2 | Laptop Konsumen |  7000000.00 | Laptop konsumen untuk kebutuhan kerja   |   25 |
++----+-----------------+-------------+-----------------------------------------+------+
+2 rows in set (0.001 sec)
+
+MariaDB [EcommerceKu_db]> UPDATE products
+    -> SET harga = 9000000, stok = 30
+    -> WHERE id = 2;
+Query OK, 1 row affected (0.018 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [EcommerceKu_db]> SELECT * FROM products;
++----+-----------------+-------------+-----------------------------------------+------+
+| id | nama_produk     | harga       | deskripsi                               | stok |
++----+-----------------+-------------+-----------------------------------------+------+
+|  1 | Laptop Gaming   | 15000000.00 | Laptop gaming dengan spesifikasi tinggi |   10 |
+|  2 | Laptop Konsumen |  9000000.00 | Laptop konsumen untuk kebutuhan kerja   |   30 |
++----+-----------------+-------------+-----------------------------------------+------+
+2 rows in set (0.001 sec)
+
+MariaDB [EcommerceKu_db]> DELETE FROM products WHERE id = 2;
+Query OK, 1 row affected (0.018 sec)
+
+MariaDB [EcommerceKu_db]> SELECT * FROM products;
++----+---------------+-------------+-----------------------------------------+------+
+| id | nama_produk   | harga       | deskripsi                               | stok |
++----+---------------+-------------+-----------------------------------------+------+
+|  1 | Laptop Gaming | 15000000.00 | Laptop gaming dengan spesifikasi tinggi |   10 |
++----+---------------+-------------+-----------------------------------------+------+
+1 row in set (0.001 sec)
+
+MariaDB [EcommerceKu_db]> INSERT INTO users (nama, email, password)
+    -> VALUES ('Zidan Fadillah', 'zidan@gmail.com', '123');
+Query OK, 1 row affected (0.019 sec)
+
+MariaDB [EcommerceKu_db]> SELECT * FROM users;
++----+----------------+-----------------+----------+
+| id | nama           | email           | password |
++----+----------------+-----------------+----------+
+|  1 | Zidan Fadillah | zidan@gmail.com | 123      |
++----+----------------+-----------------+----------+
+1 row in set (0.001 sec)
+
+MariaDB [EcommerceKu_db]> INSERT INTO orders (user_id, product_id, quantity, total)
+    -> VALUES (1, 889907, 2, (SELECT harga*2 FROM products WHERE id=1));
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`ecommerceku_db`.`orders`, CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`))
+MariaDB [EcommerceKu_db]> INSERT INTO orders (user_id, product_id, quantity, total)
+    -> VALUES (1, 1, 2, (SELECT harga*2 FROM products WHERE id=1));
+Query OK, 1 row affected (0.019 sec)
+
+MariaDB [EcommerceKu_db]> SELECT * FROM orders;
++----------+---------+------------+----------+-------------+
+| order_id | user_id | product_id | quantity | total       |
++----------+---------+------------+----------+-------------+
+|        2 |       1 |          1 |        2 | 30000000.00 |
++----------+---------+------------+----------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [EcommerceKu_db]>
